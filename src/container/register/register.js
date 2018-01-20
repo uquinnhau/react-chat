@@ -36,7 +36,6 @@ class Register extends React.Component{
 			<div>
 			{this.props.redirectTo?<Redirect to={this.props.redirectTo} />:null}
 				<Logo></Logo>
-				<h2>Register page</h2>
 				<List>
 					{this.props.msg?<p className='error-msg'>{this.props.msg}</p>:null}
 						<InputItem
@@ -51,7 +50,7 @@ class Register extends React.Component{
 						<InputItem
 						type='password'
 						 onChange={v=>this.handleChange('repeatpwd',v)}						
-						>pswConfirm</InputItem>
+						>pwdConfirm</InputItem>
 						<WhiteSpace/>		
 						<RadioItem 
 						 checked={this.state.type==='genius'}
