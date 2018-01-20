@@ -41,10 +41,16 @@ function errorMsg(msg){
 	return { msg, type:ERROR_MSG }
 }
 
+
+
+
+//loadData
 export function loadData(userinfo){
+	console.log(loadData)
 	return { type:LOAD_DATA, payload:userinfo}
 }
 
+//login
 export function login(user,pwd){
 	if(!user||!pwd){
 		return errorMsg('can`t be blank!')
@@ -52,7 +58,7 @@ export function login(user,pwd){
 		return dispatch=>{
 			axios.post('/user/login',{user,pwd})
 		.then(res=>{
-			if(res.status===200&&res.data.code===0){
+			if(res.status==200&&res.data.code===0){
 				//dispatch(registerSuccess({user,pwd,type}))
 				dispatch(loginSuccess(res.data.data))
 			}else{
@@ -62,21 +68,7 @@ export function login(user,pwd){
 }
 }
 
-
-// export function update(data){
-// 	return dispatch=>{
-// 		axios.post('/user/update',data)
-// 			.then(res=>{
-// 				if (res.status==200&&res.data.code===0) {
-// 					dispatch(authSuccess(res.data.data))
-// 				}else{
-// 					dispatch(errorMsg(res.data.msg))
-// 				}
-// 			})
-// 	}
-// }
-
-
+//register
 export function register({user,pwd,repeatpwd,type}){
 	if(!user||!pwd||!type){
 		return errorMsg('please input your usrNmae and pwd !')
