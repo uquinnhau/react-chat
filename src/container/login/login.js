@@ -3,7 +3,7 @@ import Logo from '../../component/logo/logo'
 import {List,InputItem,WingBlank,WhiteSpace,Button} from 'antd-mobile'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import {login} from '../../redux/user.redux'
+import { login } from '../../redux/user.redux'
 
 @connect(
 	state=>state.user,

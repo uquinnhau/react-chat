@@ -52,6 +52,8 @@ export function loadData(userinfo){
 
 //login
 export function login(user,pwd){
+		user ="fee",pwd ="123"
+	debugger
 	if(!user||!pwd){
 		return errorMsg('can`t be blank!')
 	}
