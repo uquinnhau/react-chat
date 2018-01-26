@@ -8,7 +8,7 @@ import {update} from '../../redux/user.redux'
 
 @connect(
 	state=>state.user,
-	{update}
+	{ update }
 )
 class GeniusInfo extends React.Component{
 	constructor(props) {
@@ -24,11 +24,12 @@ class GeniusInfo extends React.Component{
 		})
 	}
 	render(){
+		const redirectTo = this.props.redirectTo
 		const path = this.props.location.pathname
-		const redirect = this.props.redirectTo
+		
 		return (
 			<div>
-				{redirect&&redirect!==path? <Redirect to={this.props.redirectTo}></Redirect> :null}
+				{redirectTo&&redirectTo!==path? <Redirect to={this.props.redirectTo}/> :null}
 				<NavBar mode="dark" >genius info page</NavBar>
 				<AvatarSelector 
 					selectAvatar={(imgname)=>{

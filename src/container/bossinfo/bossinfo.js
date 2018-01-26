@@ -7,7 +7,7 @@ import {update} from '../../redux/user.redux'
 
 @connect(
 	state=>state.user,
-	{update}
+	{ update }
 )
 class BossInfo extends React.Component{
 	constructor(props) {
@@ -25,11 +25,12 @@ class BossInfo extends React.Component{
 		})
 	}
 	render(){
+		const redirectTo = this.props.redirectTo
 		const path = this.props.location.pathname
-		const redirect = this.props.redirectTo
+		
 		return (
 			<div>
-				{redirect&&redirect!==path? <Redirect to={this.props.redirectTo}></Redirect> :null}
+				{ redirectTo&&redirectTo!==path? <Redirect to={this.props.redirectTo }/> :null}
 				<NavBar mode="dark" >boss info page</NavBar>
 				<AvatarSelector 
 					selectAvatar={(imgname)=>{

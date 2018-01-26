@@ -47,6 +47,7 @@ export function update(data){
 	return dispatch=>{
 		axios.post('/user/update',data)
 			.then(res=>{
+				console.log( "服务端返回更新响应信息", res.data );
 				if (res.status==200&&res.data.code===0) {
 					dispatch(authSuccess(res.data.data))
 				}else{

@@ -1,14 +1,14 @@
-const express =require('express')
+const express =require("express")
 //const utils = require('utility')
-const bodyParser =require('body-parser')
-const cookieParser = require('cookie-parser')
+const bodyParser =require("body-parser")
+const cookieParser = require("cookie-parser")
 //const model = require('./model')
 const app =express()
 // work with express
 //const server = require('http').Server(app)
 
 
-const userRouter = require('./user')
+const userRouter = require("./user")
 
 
 app.use(cookieParser())
