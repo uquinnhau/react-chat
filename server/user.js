@@ -54,8 +54,8 @@ Router.post('/register',function(req,res){
 			}
 			const {user,type,_id} = d;
 			//inject cookie into cleintSide
-			//response.cookie("userid",_id);
-			return res.json({code:0,doc:{user, type, _id}})
+			res.cookie("userid",_id);
+			return res.json({code:0,data:{user, type, _id}})
 		})
 	})
 })
