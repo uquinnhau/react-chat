@@ -1,5 +1,5 @@
 import React from 'react'
-import {NavBar,InputItem, TextareaItem, Button} from 'antd-mobile'
+import { InputItem, WhiteSpace, TextareaItem, WingBlank, Button, NavBar } from "antd-mobile";
 import AvatarSelector from '../../component/avatar-selector/avatar-selector'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
@@ -13,17 +13,22 @@ class BossInfo extends React.Component{
 	constructor(props) {
 		super(props)
 		this.state = {
-			title:'',
-			desc:'',
-			company:'',
-			money:''
+            title: "",
+            avatar: ""
 		}
+        this.handleChange = this.handleChange.bind( this );
+        this.selectAvatar = this.selectAvatar.bind( this );		
 	}
-	onChange(key,val){
-		this.setState({
-			[key]:val
-		})
-	}
+    handleChange ( key, val ) {
+        this.setState({
+            [key]: val
+        })
+    }
+	    selectAvatar ( imgName ) {
+        this.setState({
+            avatar: imgName
+        })
+    }
 	render(){
 		const redirectTo = this.props.redirectTo
 		const path = this.props.location.pathname
@@ -31,7 +36,7 @@ class BossInfo extends React.Component{
 		return (
 			<div>
 				{ redirectTo&&redirectTo!==path? <Redirect to={this.props.redirectTo }/> :null}
-				<NavBar mode="dark" >boss info page</NavBar>
+				<NavBar mode="dark" >boss 页面</NavBar>
 				<AvatarSelector 
 					selectAvatar={(imgname)=>{
 						this.setState({
@@ -39,17 +44,17 @@ class BossInfo extends React.Component{
 						})
 					}}
 				></AvatarSelector>
-				<InputItem onChange={(v)=>this.onChange('title',v)}>
+				<InputItem onChange={(v)=>this.handleChange('title',v)}>
 					招聘职位
 				</InputItem>
-				<InputItem onChange={(v)=>this.onChange('company',v)}>
+				<InputItem onChange={(v)=>this.handleChange('company',v)}>
 					公司名称
 				</InputItem>
-				<InputItem onChange={(v)=>this.onChange('money',v)}>
+				<InputItem onChange={(v)=>this.handleChange('money',v)}>
 					职位薪资
 				</InputItem>
 				<TextareaItem
-					onChange={(v)=>this.onChange('desc',v)}
+					onChange={(v)=>this.handleChange('desc',v)}
 					rows={3}
 					autoHeight
 					title='职位要求'

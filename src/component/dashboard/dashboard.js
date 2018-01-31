@@ -1,16 +1,15 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {NavBar} from 'antd-mobile'
-import {Switch, Route} from 'react-router-dom'
+import { Switch, Route,Redirect } from 'react-router-dom'
 import NavLinkBar from '../navlink/navlink'
 import Boss from '../../component/boss/boss'
 import Genius from '../../component/genius/genius'
-import User from '../../component/user/user.js'
+import User from '../../component/user/user'
 
 function Msg(){
 	return <h2>消息列表页面</h2>
 }
-
 @connect(
 	state=>state
 )
@@ -51,12 +50,21 @@ class Dashboard extends React.Component{
 				component:User
 			}
 		]
-
+		const currentPage = navList.find( v => v.path === pathname );
+        // 404
+        if ( !currentPage ) {
+            return <Redirect to="/" />
+        }
 
 		return (
 			<div>
-				<NavBar className='fixd-header' mode='dard'>{navList.find(v=>v.path==pathname).title}</NavBar>
-				<div style={{marginTop:45}}>
+				<NavBar mode='dard' className='fixed-header'> 
+				{ 
+                    navList.find( v => v.path === pathname ) ? navList.find( v => v.path === pathname ).title 
+                    : null
+                }
+                </NavBar>
+				<div style={ { marginTop: "45px" }}>
 						<Switch>
 							{navList.map(v=>(
 								<Route key={v.path} path={v.path} component={v.component}></Route>

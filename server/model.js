@@ -9,7 +9,7 @@ const models ={
 		'user':{type:String,require:true},
 		'pwd':{type:String,require:true},
 		'type':{type:String,require:true},
-		//personal img
+		//avater
 		'avart':{type:String},
 		//resume
 		'desc':{type:String},

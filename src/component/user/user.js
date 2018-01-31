@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Result, List,Brief,WhiteSpace,Modal } from 'antd-mobile'
-import cookies from 'browser-cookies'
+import browserCookie from 'browser-cookies'
 import { logoutSubmit } from '../../redux/user.redux'
 import { Redirect } from 'react-router-dom'
 
@@ -33,7 +33,7 @@ class User extends React.Component{
 		return (props.user?
 			<div>
 				<Result
-					img={<img src={require(`../img/${props.avatar}.png`)} style={{width:50}} alt="" />}
+					img={<img src={require(`./../img/${props.avatar}.png`)} style={{width:50}} alt="" />}
 					title={props.user}
 					message={props.type=='boss'?props.company:null}
 				/>
@@ -59,4 +59,4 @@ class User extends React.Component{
 }
 
 
-export default User;
+export default User

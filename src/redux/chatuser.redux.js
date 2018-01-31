@@ -22,7 +22,7 @@ function userList(data){
 }
 //dispatch
 export function getUserList(type){
-	return (dispatch )=>{
+	return dispatch =>{
 		axios.get("/user/list?type="+type)
 			.then(res=>{
 				if (res.data.code===0) {

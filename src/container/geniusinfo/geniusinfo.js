@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {NavBar,InputItem, TextareaItem, Button} from 'antd-mobile'
+import { NavBar,InputItem,WhiteSpace,TextareaItem,Button,WingBlank } from 'antd-mobile'
 import AvatarSelector from '../../component/avatar-selector/avatar-selector'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
@@ -14,15 +14,22 @@ class GeniusInfo extends React.Component{
 	constructor(props) {
 		super(props)
 		this.state = {
-			title:'',
-			desc:''
+			title: "",
+			avatar: ""
 		}
+        this.handleChange = this.handleChange.bind( this );
+        this.selectAvatar = this.selectAvatar.bind( this ); 		
 	}
-	onChange(key,val){
-		this.setState({
-			[key]:val
-		})
-	}
+    handleChange ( key, val ) {
+        this.setState({
+            [key]: val
+        })
+    }
+    selectAvatar ( imgName ) {
+        this.setState({
+            avatar: imgName
+        })
+    }
 	render(){
 		const redirectTo = this.props.redirectTo
 		const path = this.props.location.pathname
@@ -30,7 +37,7 @@ class GeniusInfo extends React.Component{
 		return (
 			<div>
 				{redirectTo&&redirectTo!==path? <Redirect to={this.props.redirectTo}/> :null}
-				<NavBar mode="dark" >genius info page</NavBar>
+				<NavBar mode="dark" >牛人页面</NavBar>
 				<AvatarSelector 
 					selectAvatar={(imgname)=>{
 						this.setState({
@@ -38,23 +45,24 @@ class GeniusInfo extends React.Component{
 						})
 					}}
 				></AvatarSelector>
-				<InputItem onChange={(v)=>this.onChange('title',v)}>
-					position
+				<WingBlank>
+				<InputItem onChange={(v)=>this.handleChange('title',v)}>
+					求职岗位
 				</InputItem>
 				<TextareaItem
-					onChange={(v)=>this.onChange('desc',v)}
-					rows={3}
-					autoHeight
-					title='resume'
-				>
-				</TextareaItem>
+				        title="个人简介"
+                        autoHeight
+                        rows={3}
+                        onChange={ v => this.handleChange( "desc", v ) }
+				/>
+				<WhiteSpace />
 				<Button 
 					onClick={()=>{
 						this.props.update(this.state)
 					}}
-					type='primary'>conservation</Button>
+					type='primary'>保存</Button>
+					                </WingBlank>
 			</div>
-			
 		)
 	}
 }
